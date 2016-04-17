@@ -10,9 +10,14 @@
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
- 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	</head>
+	<body>
+		<h1>MTA Bus Visualization</h1>
+		<div id="mapid" style="width: 1200px; height: 1200px"></div>
+		
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
  	
- 	<script>
+ 		<script>
 
 		var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
@@ -33,11 +38,6 @@
 
 		mymap.on('click', onMapClick);
 
-	</script>
-
-	</head>
-	<body>
-		<h1>MTA Bus Visualization</h1>
-		<div id="mapid" style="width: 1200px; height: 1200px"></div>
+		</script>
 	</body>
 </html>
