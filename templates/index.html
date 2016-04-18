@@ -24,14 +24,13 @@
 
  	
 		<script>
-			var map = L.map('map').setView([40.725435, -73.927170], 11);
+			var map = L.map('map').setView([40.725435, -73.927170], 13);
 			
 			var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 			    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 			}).addTo(map);
 			
 			var popup = L.popup();
-		
 			function onMapClick(e) {
 				popup
 					.setLatLng(e.latlng)
@@ -40,8 +39,21 @@
 			}
 	
 			map.on('click', onMapClick);
+			
+			var myItems = [["Bus #1",40.7285, -73.97747], ["Bus #2", 40.8285, -73.87747]]
+			var array = [];
+			for (var i = 0; i < myItems.length; i++) {
+			    var item = myItems[i];
+
+			    marker = new L.marker([item[2],item[3]], {
+			        icon: mapOpts.myIcon
+			    }).bindPopup(item[1]);
+
+			    array.push(marker);
+			}
+			markers.addLayers(array).addto(map);
 	
-			L.marker([[40.7285, -73.97747],[40.8285, -74.07747]]).addTo(map).bindPopup("Bus!").openPopup();
+			// L.marker([40.7285, -73.97747]).addTo(map).bindPopup("Bus!").openPopup();
 		</script>
 
 	</body>
