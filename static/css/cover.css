@@ -48,11 +48,11 @@ body {
 
   /* ADDED */
   /* https://upload.wikimedia.org/wikipedia/commons/2/21/MTA_Bus_New_Flyer_5351.jpg */
-    color: rgb(255, 255, 255);
+    color: rgb(255,255,255);
     position: relative;
     min-height: 350px;
-    filter: grayscale(.9);
-    -webkit-filter: grayscale(.9); /* Old WebKit */
+    filter: grayscale(.75);
+    -webkit-filter: grayscale(.75); /* Old WebKit */
     background: url("https://i.ytimg.com/vi/jnEzqI_5Hp0/maxresdefault.jpg") no-repeat scroll 0px 100% / cover transparent;
   /* END ADDED */
 }
