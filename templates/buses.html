@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MTA Bus Visualizations</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <center><h1>MTA Bus Visualization</h1></center>
+        <center><div id="map" style="width: 800px; height: 400px"></div></center>
+        
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+        <!-- <script src="simpleheat.js"></script>
+        <script src="HeatLayer.js"></script> -->
+
+        <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
+
+        <script src="{{ url_for('static', filename='data/busesnow.js') }}"></script>
+
+        <script>
+            var map = L.map('map').setView([40.725435, -73.927170], 12);
+            
+            var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(map);
+            
+            var popup = L.popup();
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+            }
+    
+            map.on('click', onMapClick);
+            
+            var heat = L.heatLayer(buses, {
+                radius: 20,
+            }).addTo(map);
+    
+            // L.marker([40.7285, -73.97747]).addTo(map).bindPopup("Bus!").openPopup();
+        </script>
+
+    </body>
+</html>

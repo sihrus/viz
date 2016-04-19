@@ -41,13 +41,26 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
+
   -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
           box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+
+
+  /* ADDED */
+  /* https://upload.wikimedia.org/wikipedia/commons/2/21/MTA_Bus_New_Flyer_5351.jpg */
+    color: rgb(255, 255, 255);
+    position: relative;
+    min-height: 350px;
+    filter: grayscale(.9);
+    -webkit-filter: grayscale(.9); /* Old WebKit */
+    background: url("https://i.ytimg.com/vi/jnEzqI_5Hp0/maxresdefault.jpg") no-repeat scroll 0px 100% / cover transparent;
+  /* END ADDED */
 }
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
 }
+
 .cover-container {
   margin-right: auto;
   margin-left: auto;
@@ -161,3 +174,10 @@ body {
     width: 700px;
   }
 }
+
+
+/*
+MY ADDITIONS
+https://upload.wikimedia.org/wikipedia/commons/2/21/MTA_Bus_New_Flyer_5351.jpg
+*/
+

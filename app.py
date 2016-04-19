@@ -9,9 +9,15 @@ app = Flask(__name__)
 def main():
   return redirect('/index')
 
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-  
+  if request.method == 'POST':
+    return redirect('/buses')
+  else:
+  	return render_template('index.html')
+
+@app.route('/buses')
+def buses():
   def _flatten_dict(root_key, nested_dict, flattened_dict):
       for key, value in nested_dict.iteritems():
           next_key = root_key + "_" + key if root_key != "" else key
@@ -44,7 +50,8 @@ def index():
   text_file = open("static/data/busesnow.js", "w")
   text_file.write(output)
   text_file.close()
-  return render_template('index.html')
+  return render_template('buses.html')
+
 
 if __name__ == '__main__':
   app.run(port=33507)
