@@ -50,7 +50,17 @@ def buses():
   text_file = open("static/data/busesnow.js", "w")
   text_file.write(output)
   text_file.close()
-  return render_template('buses.html')
+
+  df['total'] = 1
+  grouped = df.groupby(['MonitoredVehicleJourney_LineRef','MonitoredVehicleJourney_DestinationName'])
+  df_count = grouped.count().reset_index()[['MonitoredVehicleJourney_LineRef','MonitoredVehicleJourney_DestinationName','total']]
+  #print df_count.describe()
+  df_count.rename(columns={'MonitoredVehicleJourney_LineRef': 'Line'}, inplace=True)
+  df_count.rename(columns={'MonitoredVehicleJourney_DestinationName': 'Direction'}, inplace=True)
+  df_count.rename(columns={'total': 'Total Buses On Route'}, inplace=True)
+  output = df_count.to_html(index=False)
+
+  return render_template('buses.html', output=output)
 
 
 if __name__ == '__main__':

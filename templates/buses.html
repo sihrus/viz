@@ -50,5 +50,20 @@
     
         </script>
 
+      <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Number of buses on each route: </h3>
+            </div>
+            <div class="panel-body">
+        <center>
+        {% if output %}
+        {{ output | safe}}
+        {% else %}
+        Error loading :(
+        {% endif %}
+        </center>
+        </div>
+      </div>
+
     </body>
 </html>
