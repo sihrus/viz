@@ -19,13 +19,23 @@
     </head>
     <body>
         <center><h1>MTA Bus Visualization</h1></center>
-        <center><div id="map" style="width: 1000px; height: 650px"></div></center>
+
+        <center>
+        {% if output %}
+        {{ output | safe}}
+        {% else %}
+        Error loading :(
+        {% endif %}
+        </center>
+        <br>
+
+        <center><div id="map" style="width: 1000px; height: 550px"></div></center>
         
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 
         <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
 
-        <script src="{{ url_for('static', filename='data/busesnow.js') }}"></script>
+        <script src="{{ url_for('static', filename='data/mybusesnow.js') }}"></script>
 
         <script>
             var map = L.map('map').setView([40.725435, -73.927170], 12);
@@ -45,23 +55,13 @@
             map.on('click', onMapClick);
             
             var heat = L.heatLayer(buses, {
-                radius: 20,
-                maxZoom: 17,
+                radius: 15,
+                maxZoom: 12
             }).addTo(map);
     
         </script>
 
         <br>
-        
-        <center>
-        {% if output %}
-        {{ output | safe}}
-        {% else %}
-        Error loading :(
-        {% endif %}
-        </center>
-
-
 
     </body>
 </html>

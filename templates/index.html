@@ -42,12 +42,23 @@
 
           <div class="inner cover">
             <h1 class="cover-heading">Oh shit! You need a bus?</h1>
-            <p class="lead">Well click on the fucking link below. Be patient, asshole. It might take a bit to load. NYC has a lot of mo'fuckin' buses.</p>
+            <p class="lead">Enter a bus route number below and click the button to get information on that route (e.g. B7, M57). 
+              Or, click on the other link to see all buses. Be patient, NYC has a lot of mo'fuckin' buses.</p>
             <p class="lead">
+              <form action="/index" method="POST">
+                    <center>
+                    <input type="text" name="text" style="color:black"><br>
+                    <br>
+                    <input type="submit" class="btn btn-lg btn-default" value="Realtime Heatmap of My MTA Bus">
+                    </center>
+              </form>
+              <br>
               <form id='analyze' method='post' enctype=multipart/form-data> 
-                <input type=submit name='submit' class="btn btn-lg btn-default" value='Realtime Heatmap of MTA Buses'>
+                <input type=submit name='submit' class="btn btn-lg btn-default" value='Realtime Heatmap of All MTA Buses'>
               </form>
             </p>
+            <br>
+
           </div>
 
 
