@@ -87,7 +87,8 @@ def buses():
   df_count.rename(columns={'MonitoredVehicleJourney_LineRef': 'Line'}, inplace=True)
   df_count.rename(columns={'MonitoredVehicleJourney_DestinationName': 'Direction'}, inplace=True)
   df_count.rename(columns={'total': 'Total Buses On Route'}, inplace=True)
-  output2 = df_count.to_html(index=False)
+  # replace CSS class for nice formatting via boostrap
+  output2 = df_count.to_html(index=False, classes='table table-striped')
 
   return render_template('buses.html', output=output, output2=output2)
 
@@ -115,9 +116,10 @@ def mybuses():
     df_count.rename(columns={'MonitoredVehicleJourney_LineRef': 'Line'}, inplace=True)
     df_count.rename(columns={'MonitoredVehicleJourney_DestinationName': 'Direction'}, inplace=True)
     df_count.rename(columns={'total': 'Total Buses On Route'}, inplace=True)
-    output2 = df_count.to_html(index=False)
+    # replace CSS class for nice formatting via boostrap
+    output2 = df_count.to_html(index=False, classes='table table-striped')
 
-    return render_template('mybuses.html', output=output, output2=output2)
+    return render_template('mybuses.html', output=output, output2=output2, mybus=text)
   except:
     flash('INVALID BUS CODE!')
     print "ERROR, BAD MTA CODE"

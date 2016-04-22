@@ -14,11 +14,10 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-
-
     </head>
     <body>
-        <center><h1>MTA Bus Visualization</h1></center>
+        <center><h1>MTA Bus Information: All Buses</h1></center>
+        
         <center><div id="map" style="width: 1000px; height: 650px"></div></center>
         
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -44,12 +43,16 @@
 
         <br>
         
-        <center>
-        {% if output2 %}
-        {{ output2 | safe}}
-        {% else %}
-        Error loading :(
-        {% endif %}
-        </center>
+        <div class="table-responsive">
+            <center>
+            {% if output2 %}
+            {{ output2 | safe}}
+            {% else %}
+            Error loading :(
+            {% endif %}
+            </center>
+        </div>
+        <br>
+
     </body>
 </html>
