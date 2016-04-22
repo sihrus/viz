@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-
+        <script type="text/javascript" src="static/d3/d3.v3.js"></script>
 
     </head>
     <body>
@@ -25,10 +25,12 @@
 
         <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
 
-        <!--<script src="{{ url_for('static', filename='data/busesnow.js') }}"></script>-->
+        <!-- <script src="{{ url_for('static', filename='data/busesnow.js') }}"></script> -->
 
         <script>
-            var buses = {{ output | safe}} ;
+
+            var buses = {{ output | safe}};
+
             var map = L.map('map').setView([40.725435, -73.927170], 12);
             
             var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -39,17 +41,12 @@
                 radius: 20,
                 maxZoom: 17,
             }).addTo(map);
+
+
     
         </script>
 
         <br>
-        
-        <center>
-        {% if output2 %}
-        {{ output2 | safe}}
-        {% else %}
-        Error loading :(
-        {% endif %}
-        </center>
+      
     </body>
 </html>

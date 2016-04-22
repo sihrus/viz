@@ -21,8 +21,8 @@
         <center><h1>MTA Bus Visualization</h1></center>
 
         <center>
-        {% if output %}
-        {{ output | safe}}
+        {% if output2 %}
+        {{ output2 | safe}}
         {% else %}
         Error loading :(
         {% endif %}
@@ -35,24 +35,16 @@
 
         <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
 
-        <script src="{{ url_for('static', filename='data/mybusesnow.js') }}"></script>
+        <!--<script src="{{ url_for('static', filename='data/busesnow.js') }}"></script>-->
 
         <script>
+            var buses = {{ output | safe}} ;
+            
             var map = L.map('map').setView([40.725435, -73.927170], 12);
             
             var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(map);
-            
-            var popup = L.popup();
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(map);
-            }
-    
-            map.on('click', onMapClick);
             
             var heat = L.heatLayer(buses, {
                 radius: 15,
